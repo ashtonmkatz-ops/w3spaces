@@ -1,0 +1,194 @@
+<style>
+.local-lights-out {
+    position: relative;
+    width: 80%;
+    margin: 1em auto;
+    overflow: hidden;  /* hides the extra bits of open lights near the edges */
+
+    &.--buttons-demo {
+        max-width: 24em;
+    }
+
+    > .-lights {
+        display: grid;
+        grid: repeat(5, 1fr) / repeat(5, 1fr);
+        gap: 1em;
+        isolation: isolate;
+        margin: 4px;  /* enough space for the highlight ring */
+
+        details {
+            position: relative;
+            padding-bottom: 100%;
+
+            > summary {
+                position: absolute;
+                inset: 0;
+                list-style: none;
+                cursor: pointer;
+                background: black;
+                border-radius: 1em;
+            }
+            &:hover > summary {
+                box-shadow: 0 0 0 4px orange;
+            }
+
+            > .-on {
+                position: absolute;
+                inset: 0;
+                z-index: 3;
+                display: grid;
+                place-items: center;
+                margin-bottom: 1em;  /* match button underlay so it's centered on the "top" */
+                font-weight: bold;
+                pointer-events: none;
+                mix-blend-mode: difference;
+                color: white;
+            }
+
+            > .-light {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                border-radius: 1em;
+                background: gold;
+                pointer-events: none;
+
+                &.--center {
+                    inset: 0;
+                    z-index: 1;
+                }
+
+                &.--north, &.--south, &.--east, &.--west {
+                    mix-blend-mode: difference;
+                    z-index: 2;
+                }
+
+                &.--north {
+                    bottom: calc(-100% - 1em);
+                }
+                &.--south {
+                    top: calc(-100% - 1em);
+                }
+                &.--east {
+                    right: calc(-100% - 1em);
+                }
+                &.--west {
+                    left: calc(-100% - 1em);
+                }
+            }
+        }
+    }
+
+    > .-buttons {
+        display: grid;
+        grid: repeat(5, 1fr) / repeat(5, 1fr);
+        gap: 1em;
+        isolation: isolate;
+        position: absolute;
+        inset: 0;
+        margin: 4px;
+        pointer-events: none;
+        opacity: 0.5;
+
+        > div {
+            padding-bottom: 100%;
+            background: radial-gradient(#ffcc, transparent);
+            box-shadow: inset 0 0 0 2px black, inset 0 calc(-1em - 2px) 2px 0 gray, inset 0 0 2px 0.25em white, inset 0 -1em 2px 0.25em white;
+            border-radius: 1em;
+        }
+    }
+}
+
+button#local-lights-out-scramble {
+    font-size: 1.5em;
+    display: block;
+    margin: 1em auto;
+    padding: 0.5em 2em;
+}
+
+.local-lights-out-example {
+    display: grid;
+    grid: auto-flow / repeat(5, auto);
+    gap: 0.5em;
+    width: max-content;
+    margin: 1em auto;
+
+    > div {
+        display: grid;
+        place-items: center;
+        height: 2em;
+        width: 2em;
+        line-height: 1;
+        border-radius: 0.25em;
+
+        background: #666;
+        color: white;
+
+        &.-a {
+            background: hsl(345deg 100% 60%);
+        }
+        &.-b {
+            background: hsl(225deg 100% 60%);
+        }
+        &.-ab {
+            background: repeating-linear-gradient(to bottom right, hsl(345deg 100% 60%) 0 0.71em, hsl(225deg 100% 60%) 0.71em 1.414em);
+        }
+    }
+}
+</style>
+
+<div class="local-lights-out" id="local-lights-out-main-puzzle">
+    <div class="-lights">
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details>      <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+        <details open> <summary></summary> <div class="-light --center"></div> <div class="-light --north"></div> <div class="-light --south"></div> <div class="-light --east"></div> <div class="-light --west"></div> </details>
+    </div>
+    <div class="-buttons">
+        <div></div> <div></div> <div></div> <div></div> <div></div>
+        <div></div> <div></div> <div></div> <div></div> <div></div>
+        <div></div> <div></div> <div></div> <div></div> <div></div>
+        <div></div> <div></div> <div></div> <div></div> <div></div>
+        <div></div> <div></div> <div></div> <div></div> <div></div>
+    </div>
+</div>
+
+
+<p><button type="button" id="local-lights-out-scramble">Scramble the board</button></p>
+<script>
+document.querySelector('#local-lights-out-scramble').addEventListener('click', () => {
+    for (let light of document.querySelectorAll('#local-lights-out-main-puzzle > .-lights > details')) {
+        if (Math.random() < 0.5) {
+            light.setAttribute('open', '');
+        }
+        else {
+            light.removeAttribute('open');
+        }
+    }
+});
+</script>
